@@ -15,6 +15,8 @@
 
 LazyVStack and LazyHStack can be used in exactly the same way as regular stacks but will load their content on-demand – they won’t create views until they are actually shown, and so minimize the amount of system resources being used.
 
+![2023-03-04 15 14 57](https://user-images.githubusercontent.com/47273077/222879462-572dced4-90c6-4fc1-ae62-03c90992aafd.gif)
+
 ```swift
 LazyVStack(spacing: 10) {
     ForEach(0..<100) {
