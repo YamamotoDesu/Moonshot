@@ -29,3 +29,21 @@ LazyVStack(spacing: 10) {
 ```
 Literally all it takes is to add “Lazy” before “VStack” to have our code run more efficiently – it will now only create the CustomText structs when they are actually needed.
 
+<img width="514" alt="スクリーンショット 2023-03-04 16 19 27" src="https://user-images.githubusercontent.com/47273077/222881903-bfec29a8-9a27-42cf-bf3c-f1530194bffc.png">
+
+```swift
+    let input = [
+        GridItem(.fixed(80)),
+        GridItem(.fixed(80)),
+        GridItem(.fixed(80))
+    ]
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: input) {
+                ForEach(0..<1000) {
+                    Text("Item \($0)")
+                }
+            }
+        }
+    }
+ ```
