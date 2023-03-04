@@ -49,6 +49,7 @@ Literally all it takes is to add “Lazy” before “VStack” to have our code
  ```
  
  <img width="514" alt="スクリーンショット 2023-03-04 16 21 25" src="https://user-images.githubusercontent.com/47273077/222881997-1848a19f-34d2-4e64-8dd8-07547ad147a2.png">
+ 
  ```swift
   let input = [
         GridItem(.adaptive(minimum: 80))
