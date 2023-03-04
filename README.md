@@ -11,3 +11,19 @@
                 .frame(width: geo.size.width, height: geo.size.height)
         }
  ```
+
+
+LazyVStack and LazyHStack can be used in exactly the same way as regular stacks but will load their content on-demand – they won’t create views until they are actually shown, and so minimize the amount of system resources being used.
+
+```swift
+LazyVStack(spacing: 10) {
+    ForEach(0..<100) {
+        CustomText("Item \($0)")
+            .font(.title)
+    }
+}
+.frame(maxWidth: .infinity)
+
+```
+Literally all it takes is to add “Lazy” before “VStack” to have our code run more efficiently – it will now only create the CustomText structs when they are actually needed.
+
