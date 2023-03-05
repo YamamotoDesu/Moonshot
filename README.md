@@ -62,6 +62,7 @@ struct ContentView: View {
 ```
 
 <img width="514" alt="スクリーンショット 2023-03-05 18 56 59" src="https://user-images.githubusercontent.com/47273077/222953647-f4c179ad-7d20-4a7e-84be-9014e0ba25ee.png">
+
 ```swift
 struct MissionView: View {
     struct CrewMember {
