@@ -8,16 +8,58 @@
 import SwiftUI
 
 struct ContentView: View {
+    let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+    let misssons: [Misson] = Bundle.main.decode("missions.json")
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
     var body: some View {
-        GeometryReader { geo in
-            Image("anders")
-                .resizable()
-                .scaledToFit()
-                .frame(width: geo.size.width * 0.8)
-                .frame(width: geo.size.width, height: geo.size.height)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(misssons) { missson in
+                        NavigationLink {
+                            MissionView(mission: missson, astronauts: astronauts)
+                        } label: {
+                            VStack {
+                                Image(missson.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .padding()
+                                
+                                VStack {
+                                    Text(missson.displayName)
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                    
+                                    Text(missson.formattedLaunchDate)
+                                        .font(.caption)
+                                        .foregroundColor(.white.opacity(0.5))
+                                }
+                                .padding(.vertical)
+                                .frame(maxWidth: .infinity)
+                                .background(.lightBackground)
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.lightBackground)
+                            )
+                        }
+                    }
+                }
+                .padding([.horizontal, .bottom])
+            }
+            .navigationTitle("Moonshot")
+            .background(.darkBackground)
+            .preferredColorScheme(.dark)
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
